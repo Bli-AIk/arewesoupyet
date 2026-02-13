@@ -1,6 +1,6 @@
 # are_we_soup_yet (我们“成羹”了吗？)
 
-[![license](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue)](LICENSE-APACHE) <img src="https://img.shields.io/github/repo-size/Bli-AIk/are_we_soup_yet.svg"/> <img src="https://img.shields.io/github/last-commit/Bli-AIk/are_we_soup_yet.svg"/> <br>
+[![license](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue)](LICENSE-APACHE) <img src="https://img.shields.io/github/repo-size/Bli-AIk/arewesoupyet.svg"/> <img src="https://img.shields.io/github/last-commit/Bli-AIk/arewesoupyet.svg"/> <br>
 <img src="https://img.shields.io/badge/Zola-30E330?style=for-the-badge&logo=zola&logoColor=white" />
 
 **are_we_soup_yet** — souprune 框架的数据驱动健康检查（状态追踪）网站。
@@ -33,7 +33,7 @@
 2. **克隆仓库**:
 
    ```bash
-   git clone https://github.com/Bli-AIk/are_we_soup_yet.git
+   git clone https://github.com/Bli-AIk/arewesoupyet.git
    cd are_we_soup_yet
    ```
 
@@ -58,7 +58,7 @@
 1. **克隆仓库**:
 
    ```bash
-   git clone https://github.com/Bli-AIk/are_we_soup_yet.git
+   git clone https://github.com/Bli-AIk/arewesoupyet.git
    cd are_we_soup_yet
    ```
 
