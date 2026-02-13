@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.title }}</title>
+    <link rel="stylesheet" href="{{ get_url(path="style.css") | safe }}">
+</head>
+<body>
+    {% set data = load_data(path="data/metrics.toml") %}
+    {% set all_metrics = [] %}
+    {% for cat in data.categories %}
+        {% for m in cat.metrics %}
+            {% set_global all_metrics = all_metrics | concat(with=m) %}
+        {% endfor %}
+    {% endfor %}
+
+    {% set yes_count = 0 %}
+    {% set wip_count = 0 %}
+    {% set no_count = 0 %}
+    {% for m in all_metrics %}
+        {% if m.status == "yes" %}{% set_global yes_count = yes_count + 1 %}{% endif %}
+        {% if m.status == "wip" %}{% set_global wip_count = wip_count + 1 %}{% endif %}
+        {% if m.status == "no" %}{% set_global no_count = no_count + 1 %}{% endif %}
+    {% endfor %}
+    {% set total_count = all_metrics | length %}
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="site-status">
+                <span class="status-label">SYSTEM_READY</span>
+                <span class="status-summary">
+                    (<span class="stat-yes">{{ yes_count }}</span>/<span class="stat-wip">{{ wip_count }}</span>/<span class="stat-no">{{ no_count }}</span>/<span class="stat-total">{{ total_count }}</span>)
+                </span>
+            </div>
+            <div class="lang-switch">
+                {% if lang == "zh" %}
+                    <a href="{{ get_url(path="", lang="en") }}">ENGLISH</a>
+                {% else %}
+                    <a href="{{ get_url(path="", lang="zh") }}">简体中文</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="title-section">
+                <h1>{{ config.title }}</h1>
+                <div class="title-status-badge {{ config.extra.status }}">
+                    {% if lang == "zh" %}{{ config.extra.status_text_zh }}{% else %}{{ config.extra.status_text_en }}{% endif %}
+                </div>
+            </div>
+            
+            <div class="title-response">{% if lang == "zh" %}{{ config.extra.status_detail_zh | trim }}{% else %}{{ config.extra.status_detail_en | trim }}{% endif %}</div>
+
+            <div class="manifesto">{% if lang == "zh" %}{{ config.extra.manifesto_zh | trim }}{% else %}{{ config.extra.manifesto_en | trim }}{% endif %}</div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+            <p>SOUPRUNE HEALTH CHECK - {{ now() | date(format="%Y-%m-%d") }}</p>
+        </footer>
+    </div>
+</body>
+</html>

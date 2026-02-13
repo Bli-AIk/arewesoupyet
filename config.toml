@@ -1,0 +1,30 @@
+base_url = "https://arewesoupyet.com"
+default_language = "en"
+compile_sass = true
+
+[languages.en]
+title = "Are We Soup Yet?"
+description = "A health check for the souprune framework."
+
+[languages.zh]
+title = "我们“成羹”了吗？"
+description = "souprune 框架健康检查。"
+
+[extra]
+manifesto_en = """
+Before the community questions us, we question ourselves.
+This is not a showcase; it is an honest health check of souprune."""
+manifesto_zh = """
+在社区发出质疑之前，我们要先审视自己。
+这里不是技术展示区域，而是对 souprune 最诚实的体检单。"""
+
+# Site-wide status
+status = "wip"
+status_text_en = "NOT QUITE SOUP..."
+status_text_zh = "还没“成羹”…"
+status_detail_en = """
+The stock has simmered into a rich, deep hue (Underlying architecture),
+but not a single leaf of garnish has managed to surface in the pot (Actual application)."""
+status_detail_zh = """
+汤底已经熬出了浓郁的色泽（底层架构），
+但是锅里甚至还没能漂起一片菜叶（实际应用）。"""

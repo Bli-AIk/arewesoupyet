@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    {% set data = load_data(path="data/metrics.toml") %}
+    
+    {% for category in data.categories %}
+        <section class="category">
+            <div class="category-header">
+                <div class="category-title-row">
+                    <h2>
+                        {% if lang == "zh" %}
+                            {{ category.name_zh }}
+                        {% else %}
+                            {{ category.name_en }}
+                        {% endif %}
+                    </h2>
+                    <div class="status-badge {{ category.status }}">
+                        {% if lang == "zh" %}{{ category.status_text_zh }}{% else %}{{ category.status_text_en }}{% endif %}
+                    </div>
+                </div>
+                <div class="category-response">
+                    {% if lang == "zh" %}{{ category.status_detail_zh }}{% else %}{{ category.status_detail_en }}{% endif %}
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                {% for metric in category.metrics %}
+                    <div class="metric-card">
+                        <div class="header">
+                            <h3 class="question">
+                                {% if lang == "zh" %}
+                                    {{ metric.question_zh }}
+                                    <small>{{ metric.question_en }}</small>
+                                {% else %}
+                                    {{ metric.question_en }}
+                                {% endif %}
+                            </h3>
+                            <div class="status-badge {{ metric.status }}">
+                                {% if lang == "zh" %}
+                                    {{ metric.custom_text_zh }}
+                                {% else %}
+                                    {{ metric.custom_text_en }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            {% if lang == "zh" %}
+                                {{ metric.description_zh }}
+                            {% else %}
+                                {{ metric.description_en }}
+                            {% endif %}
+                        </div>
+
+                        <div class="detail">
+                            {% if lang == "zh" %}
+                                {{ metric.detail_zh }}
+                            {% else %}
+                                {{ metric.detail_en }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+</main>
+{% endblock content %}

@@ -1,0 +1,284 @@
+:root {
+  --vp-c-bg: #0b0c10;
+  --vp-c-bg-soft: #14161a;
+  --vp-c-brand-1: #ff7e33;
+  --vp-c-brand-2: #e0561a;
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: #aab2c0;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --line-color: rgba(255, 255, 255, 0.15); /* New more visible color */
+
+  --color-yes: #4caf50;
+  --color-wip: #ffc107;
+  --color-no: #f44336;
+  
+  --container-max-width: 1200px;
+}
+
+html, body {
+  background-color: var(--vp-c-bg);
+  background-image: 
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+  color: var(--vp-c-text-1);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Inter', system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.top-nav {
+  background: rgba(11, 12, 16, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  .nav-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .site-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+
+    .status-label {
+      color: var(--vp-c-brand-1);
+      &::before {
+        content: "● ";
+        animation: blink 1.5s infinite;
+      }
+    }
+
+    .status-summary {
+      color: var(--vp-c-brand-1); /* Parentheses in brand orange */
+      font-weight: 700;
+      opacity: 0.9;
+      
+      .stat-yes { color: #89b482; } /* Muted Aqua/Green */
+      .stat-wip { color: #d8a657; } /* Muted Amber/Yellow */
+      .stat-no { color: #ea6962; }  /* Muted Red/Coral */
+      .stat-total { color: #ffad7d; } /* Slightly brighter orange for total */
+    }
+  }
+
+  .lang-switch a {
+    color: var(--vp-c-text-2);
+    text-decoration: none;
+    font-size: 0.75rem;
+    border: 1px solid var(--line-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background: rgba(255, 126, 51, 0.1);
+      border-color: var(--vp-c-brand-1);
+      color: var(--vp-c-brand-1);
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+header {
+  margin-bottom: 6rem;
+  text-align: left;
+
+  .title-section {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--vp-c-text-1);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .title-status-badge {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 800;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+    &.yes { background: rgba(76, 175, 80, 0.2); color: var(--color-yes); }
+    &.wip { background: rgba(255, 193, 7, 0.2); color: var(--color-wip); }
+    &.no { background: rgba(244, 67, 54, 0.2); color: var(--color-no); }
+  }
+
+  .title-response {
+    font-size: 1.25rem;
+    color: var(--vp-c-brand-1);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    white-space: pre-wrap;
+  }
+
+  .manifesto {
+    font-size: 1.1rem;
+    color: var(--vp-c-text-2);
+    line-height: 1.6;
+    border-left: 2px solid var(--line-color);
+    padding-left: 1.5rem;
+    font-style: italic;
+    white-space: pre-wrap;
+  }
+}
+
+.category {
+  margin-bottom: 6rem;
+
+  .category-header {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--line-color);
+    padding-bottom: 1.5rem;
+  }
+
+  .category-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    color: var(--vp-c-text-1);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .category-response {
+    color: var(--vp-c-text-2);
+    font-size: 1rem;
+    max-width: 800px;
+  }
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+
+  &.yes { background: rgba(76, 175, 80, 0.1); color: var(--color-yes); }
+  &.wip { background: rgba(255, 193, 7, 0.1); color: var(--color-wip); }
+  &.no { background: rgba(244, 67, 54, 0.1); color: var(--color-no); }
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.metric-card {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--line-color);
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(255, 126, 51, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+
+    .question {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.2;
+
+      small {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--vp-c-text-2);
+        font-weight: 400;
+        margin-top: 0.4rem;
+        font-family: 'JetBrains Mono', monospace;
+      }
+    }
+  }
+
+  .description {
+    color: var(--vp-c-brand-1);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .detail {
+    font-size: 1rem;
+    color: var(--vp-c-text-2);
+    line-height: 1.6;
+  }
+}
+
+footer {
+  text-align: left;
+  margin-top: 8rem;
+  padding: 4rem 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  border-top: 1px solid var(--line-color);
+  opacity: 0.6;
+}
+
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+  }
+  
+  header .title-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
