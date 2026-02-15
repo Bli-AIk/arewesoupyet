@@ -2,7 +2,7 @@
 
 {% block content %}
 <main>
-    {% set data = load_data(path="data/metrics.toml") %}
+    {% set data = load_data(path="content/metrics.toml") %}
     
     {% for category in data.categories %}
         <section class="category">

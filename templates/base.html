@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ get_url(path="style.css") | safe }}">
 </head>
 <body>
-    {% set data = load_data(path="data/metrics.toml") %}
+    {% set data = load_data(path="content/metrics.toml") %}
     {% set all_metrics = [] %}
     {% for cat in data.categories %}
         {% for m in cat.metrics %}
